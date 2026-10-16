@@ -1,0 +1,16 @@
+services:
+  retro-tube:
+    build: .
+    container_name: retro-tube
+    restart: unless-stopped
+    ports:
+      - "7004:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - VIDEO_DIR=/media
+    volumes:
+      - /media/jellyfin_videos/Media/tube-clips:/media:ro
+      - ./data/thumbnails:/app/public/thumbnails
+      - ./public:/app/public
+      - ./server.js:/app/server.js
