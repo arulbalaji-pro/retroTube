@@ -1,0 +1,14 @@
+[Unit]
+Description=RetroTube AI Comment Worker
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/retro-tube
+ExecStart=/usr/bin/python3 ai_worker.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
